@@ -48,6 +48,23 @@ public class ProductServiceImpl implements ProductService {
         Page<Product> products = productRepo.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
         return  products;
     }
+
+    @Override
+    public List<Product> sortBasedOnSomeField(String field) {
+        return productRepo.findAll(Sort.by(Sort.Direction.ASC,field));
+
+    }
+
+    @Override
+    public Page<Product> getProductWithPagination(int offset, int pageSize) {
+        return productRepo.findAll(PageRequest.of(offset, pageSize));
+    }
+
+    @Override
+    public Page<Product> getProoductWithPaginationAndSorting(int offset, int pageSize, String field) {
+        return productRepo.findAll(PageRequest.of(offset,pageSize).withSort(Sort.by(field)));
+    }
+
     @PostConstruct
     public void initDB() {
         List<Product> products = IntStream.rangeClosed(1, 300)

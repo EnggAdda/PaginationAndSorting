@@ -20,4 +20,10 @@ public interface ProductService {
     Page<Product> findProductsWithPagination(int offset, int pageSize);
 
     Page<Product> findProductsWithPaginationAndSorting(int offset,int pageSize,String field);
+
+    List<Product> sortBasedOnSomeField( String field);
+
+    Page<Product> getProductWithPagination(int offset , int pageSize);
+
+    Page<Product>  getProoductWithPaginationAndSorting(int offset, int pageSize, String field);
 }
